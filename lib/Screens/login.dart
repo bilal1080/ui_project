@@ -4,21 +4,19 @@ import 'package:flutter_project1/Common/widgets/height.dart';
 import 'package:flutter_project1/Common/widgets/materialbutton.dart';
 
 import 'package:flutter_project1/Common/widgets/textformfield.dart';
-import 'package:flutter_project1/Screens/login.dart';
+import 'package:flutter_project1/Screens/signup.dart';
 
-class SignUp extends StatefulWidget {
-  SignUp({Key? key}) : super(key: key);
+class Login extends StatefulWidget {
+  Login({Key? key}) : super(key: key);
 
   @override
-  _SignUpState createState() => _SignUpState();
+  _LoginState createState() => _LoginState();
 }
 
-class _SignUpState extends State<SignUp> {
-  TextEditingController _nameController = new TextEditingController();
+class _LoginState extends State<Login> {
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   var _formkey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,38 +39,26 @@ class _SignUpState extends State<SignUp> {
                   fontWeight: FontWeight.w900,
                 ),
               ),
+              Height(height: 2.0),
               Text(
-                'You are almost there!',
+                "Let's find what you desire.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 16.0,
                     fontWeight: FontWeight.w400),
               ),
-              Height(height: 36.0),
+              Height(height: 34.0),
               Image(
-                image: AssetImage("assets/img_signup.png"),
-                height: 188,
-                width: 233,
+                image: AssetImage("assets/img_login.png"),
+                height: 192.15,
+                width: 229.55,
               ),
-              Height(height: 44.0),
-              TextInputField(
-                validator: (value) {
-                  if (value!.isEmpty || value.contains('@') || value.contains('.')) {
-                    return 'Please enter a valid Name';
-                  }
-                  return null;
-                },
-                onTap: () {},
-                label: 'Name',
-                keyboardType: TextInputType.name,
-                controller: _nameController,
-              ),
-              Height(height: 10.0),
+              Height(height: 41.85),
               TextInputField(
                 validator: (value) {
                   if (value!.isEmpty || !value.contains('@')) {
-                    return 'Please enter a valid Username';
+                    return 'Please enter a valid Email';
                   }
                   return null;
                 },
@@ -94,14 +80,27 @@ class _SignUpState extends State<SignUp> {
                 keyboardType: TextInputType.visiblePassword,
                 controller: _passwordController,
               ),
-              Height(height: 10.0),
+              Height(height: 15.0),
+              GestureDetector(
+                onTap: () {},
+                child: Text(
+                  'Forgot Password?',
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff00B761),
+                  ),
+                ),
+              ),
+              Height(height: 31.0),
               InputMaterialButton(
-                  text: 'Signup',
+                  text: 'Login',
                   color: Color(0xff00B761),
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Login()));
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //       const SnackBar(content: Text('congrdulations')));
                     }
                   }),
               Height(height: 27.0),
@@ -130,17 +129,16 @@ class _SignUpState extends State<SignUp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Already have an Account? ',
-                    style:
-                        TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0),
+                    "Don" + "'" + "t have an Account? ",
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0),
                   ),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Login()));
+                          MaterialPageRoute(builder: (context) => SignUp()));
                     },
                     child: Text(
-                      'Login',
+                      'Signup',
                       style: TextStyle(
                         color: Color(0xff00B761),
                         fontWeight: FontWeight.w400,

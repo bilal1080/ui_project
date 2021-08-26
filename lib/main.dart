@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_project1/Screens/signup.dart';
-
+import 'package:flutter_project1/Screens/mainpage.dart';
 import 'package:flutter_project1/Screens/splashScreen.dart';
+
+
 
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'New App',
-      home: SplashScreen(),
+      home: MainPage(),
     );
   }
 }

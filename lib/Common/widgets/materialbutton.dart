@@ -18,7 +18,7 @@ class InputMaterialButton extends StatelessWidget {
       minWidth: double.minPositive,
       height: 50,
       color: color,
-      onPressed: () {},
+      onPressed: onPressed,
       
       child: Text(
         text,

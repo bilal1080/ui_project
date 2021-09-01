@@ -4,6 +4,7 @@ import 'package:flutter_project1/Common/widgets/height.dart';
 import 'package:flutter_project1/Common/widgets/materialbutton.dart';
 
 import 'package:flutter_project1/Common/widgets/textformfield.dart';
+import 'package:flutter_project1/Screens/funtions.dart';
 import 'package:flutter_project1/Screens/signup.dart';
 
 class Login extends StatefulWidget {
@@ -71,7 +72,7 @@ class _LoginState extends State<Login> {
               TextInputField(
                 validator: (value) {
                   if (value!.isEmpty || value.length < 7) {
-                    return 'Please enter a valid password';
+                    return 'Invalid password';
                   }
                   return null;
                 },
@@ -99,8 +100,10 @@ class _LoginState extends State<Login> {
                   color: Color(0xff00B761),
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
-                      // ScaffoldMessenger.of(context).showSnackBar(
-                      //       const SnackBar(content: Text('congrdulations')));
+                      Userlogin(_emailController.text.toString(),
+                          _passwordController.text.toString());
+                      _emailController.clear();
+                      _passwordController.clear();
                     }
                   }),
               Height(height: 27.0),
@@ -130,7 +133,8 @@ class _LoginState extends State<Login> {
                 children: [
                   Text(
                     "Don" + "'" + "t have an Account? ",
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0),
+                    style:
+                        TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0),
                   ),
                   GestureDetector(
                     onTap: () {

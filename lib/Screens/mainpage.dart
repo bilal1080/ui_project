@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project1/Common/widgets/materialbutton.dart';
 import 'package:flutter_project1/Screens/funtions.dart';
+//import 'package:flutter_project1/Screens/funtions.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key? key}) : super(key: key);
@@ -16,17 +17,28 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: Text('Welcome'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('I am here'),
-          InputMaterialButton(
-              text: 'Click me',
-              color: Colors.blue,
-              onPressed: () {
-                createUser('malik1@milinator.com', '123456789');
-              }),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InputMaterialButton(
+                text: 'Click me to get data',
+                color: Colors.blue,
+                onPressed: () {
+                  getData();
+                }),
+            SizedBox(
+              height: 20,
+            ),
+            InputMaterialButton(
+                text: 'Click me to post data',
+                color: Colors.blue,
+                onPressed: () {
+                  createUser('malikg@mailinator.com', 'Malik', 'Bilal',
+                      '12345678', '0303172383');
+                }),
+          ],
+        ),
       ),
     );
   }

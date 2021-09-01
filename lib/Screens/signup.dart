@@ -4,6 +4,7 @@ import 'package:flutter_project1/Common/widgets/height.dart';
 import 'package:flutter_project1/Common/widgets/materialbutton.dart';
 
 import 'package:flutter_project1/Common/widgets/textformfield.dart';
+import 'package:flutter_project1/Screens/funtions.dart';
 import 'package:flutter_project1/Screens/login.dart';
 
 class SignUp extends StatefulWidget {
@@ -14,7 +15,9 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  TextEditingController _nameController = new TextEditingController();
+  TextEditingController _firstnameController = new TextEditingController();
+  TextEditingController _lastnameController = new TextEditingController();
+  TextEditingController _phonenoController = new TextEditingController();
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   var _formkey = GlobalKey<FormState>();
@@ -58,15 +61,32 @@ class _SignUpState extends State<SignUp> {
               Height(height: 44.0),
               TextInputField(
                 validator: (value) {
-                  if (value!.isEmpty || value.contains('@') || value.contains('.')) {
+                  if (value!.isEmpty ||
+                      value.contains('@') ||
+                      value.contains('.')) {
                     return 'Please enter a valid Name';
                   }
                   return null;
                 },
                 onTap: () {},
-                label: 'Name',
+                label: 'First Name',
                 keyboardType: TextInputType.name,
-                controller: _nameController,
+                controller: _firstnameController,
+              ),
+              Height(height: 10.0),
+              TextInputField(
+                validator: (value) {
+                  if (value!.isEmpty ||
+                      value.contains('@') ||
+                      value.contains('.')) {
+                    return 'Please enter a valid Name';
+                  }
+                  return null;
+                },
+                onTap: () {},
+                label: 'Last Name',
+                keyboardType: TextInputType.name,
+                controller: _lastnameController,
               ),
               Height(height: 10.0),
               TextInputField(
@@ -80,6 +100,19 @@ class _SignUpState extends State<SignUp> {
                 label: 'Email',
                 keyboardType: TextInputType.emailAddress,
                 controller: _emailController,
+              ),
+              Height(height: 10.0),
+              TextInputField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter a valid number';
+                  }
+                  return null;
+                },
+                onTap: () {},
+                label: 'Phone No#',
+                keyboardType: TextInputType.emailAddress,
+                controller: _phonenoController,
               ),
               Height(height: 10.0),
               TextInputField(
@@ -100,6 +133,17 @@ class _SignUpState extends State<SignUp> {
                   color: Color(0xff00B761),
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
+                      createUser(
+                          _emailController.text.toString(),
+                          _firstnameController.text.toString(),
+                          _lastnameController.text.toString(),
+                          _passwordController.text.toString(),
+                          _phonenoController.text.toString());
+                      _emailController.clear();
+                      _firstnameController.clear();
+                      _lastnameController.clear();
+                      _phonenoController.clear();
+                      _passwordController.clear();
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Login()));
                     }

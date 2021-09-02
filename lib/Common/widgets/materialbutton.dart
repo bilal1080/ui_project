@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project1/Common/widgets/inputText.dart';
 
 class InputMaterialButton extends StatelessWidget {
   final String text;
@@ -16,15 +17,11 @@ class InputMaterialButton extends StatelessWidget {
     return MaterialButton(
       //padding: EdgeInsets.all(15.0),
       minWidth: double.minPositive,
-      height: 50,
+      height: 50.0,
       color: color,
       onPressed: onPressed,
       
-      child: Text(
-        text,
-        style: TextStyle(
-            fontWeight: FontWeight.w900, fontSize: 16, color: Colors.white),
-      ),
+      child: InputText(text: text, color: Colors.white, weight: FontWeight.w900, size: 16.0, alignment: TextAlign.center,),
 
       shape: RoundedRectangleBorder(
         

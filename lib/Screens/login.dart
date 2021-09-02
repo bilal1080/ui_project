@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project1/Common/widgets/Elevatedbutton.dart';
 import 'package:flutter_project1/Common/widgets/height.dart';
+import 'package:flutter_project1/Common/widgets/inputText.dart';
 import 'package:flutter_project1/Common/widgets/materialbutton.dart';
 
 import 'package:flutter_project1/Common/widgets/textformfield.dart';
@@ -30,26 +31,23 @@ class _LoginState extends State<Login> {
           key: _formkey,
           child: ListView(
             children: <Widget>[
-              Container(
+              Height(
                 height: 50.0,
               ),
-              Text(
-                'Welcome!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xff00B761),
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w900,
-                ),
+              InputText(
+                text: "Welcome",
+                color: Color(0xff00B761),
+                weight: FontWeight.w900,
+                size: 24.0,
+                alignment: TextAlign.center,
               ),
               Height(height: 2.0),
-              Text(
-                "Let's find what you desire.",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400),
+              InputText(
+                text: "Let's find what you desire.",
+                color: Colors.black,
+                weight: FontWeight.w400,
+                size: 16.0,
+                alignment: TextAlign.center,
               ),
               Height(height: 34.0),
               Image(
@@ -106,7 +104,8 @@ class _LoginState extends State<Login> {
                           _passwordController.text.toString());
                       _emailController.clear();
                       _passwordController.clear();
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>MainPage()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => MainPage()));
                     }
                   }),
               Height(height: 27.0),
@@ -136,23 +135,23 @@ class _LoginState extends State<Login> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Don" + "'" + "t have an Account? ",
-                    style:
-                        TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0),
-                  ),
+                  InputText(
+                      text: "Don't have an Account? ",
+                      color: Colors.black,
+                      weight: FontWeight.w400,
+                      size: 14.0,
+                      alignment: TextAlign.center),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => SignUp()));
                     },
-                    child: Text(
-                      'Signup',
-                      style: TextStyle(
+                    child: InputText(
+                        text: "Signup",
                         color: Color(0xff00B761),
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                        weight: FontWeight.w400,
+                        size: 14.0,
+                        alignment: TextAlign.center),
                   ),
                 ],
               ),

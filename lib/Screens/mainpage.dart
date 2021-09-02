@@ -35,12 +35,6 @@ class _MainPageState extends State<MainPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // InputMaterialButton(
-            //     text: 'Click me to remove token',
-            //     color: Colors.blue,
-            //     onPressed: () {
-            //       removeUser();
-            //     }),
             SizedBox(
               height: 20,
             ),

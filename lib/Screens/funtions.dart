@@ -46,15 +46,10 @@ Future<Post?> Userlogin(String user_name, String pass_word) async {
   final response = await http.post(Uri.parse(URL));
   //print(response.statusCode);
 
-  // Post.fromJson(json.decode(response.body));
   if (response.statusCode == 200 || response.statusCode == 201) {
-    // print('>>>>>response');
-    // print(response.body);
     final Map<String, dynamic> responseData = json.decode(response.body);
 
     var userData = responseData["api_token"];
-
-    //Post authUser = Post.fromJson(responseData);
     print(userData);
     print('>>>>>>>>>>>>token');
     saveUser(userData);

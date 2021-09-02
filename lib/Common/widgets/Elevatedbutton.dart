@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project1/Common/widgets/inputText.dart';
 
 class InputElevatedButton extends StatelessWidget {
   final String text;
@@ -19,10 +20,7 @@ class InputElevatedButton extends StatelessWidget {
       
       onPressed: onPressed, 
       icon: image, 
-      label: Text(text,
-      style: TextStyle(
-            fontWeight: FontWeight.w900, fontSize: 16, color: Colors.white),
-      ),
+      label: InputText(text: text, color: Colors.white, weight: FontWeight.w900, size: 16.0, alignment: TextAlign.center,),
       style: ElevatedButton.styleFrom(
         primary: color,
         minimumSize: Size(40, 50),

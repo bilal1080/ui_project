@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project1/Common/widgets/Elevatedbutton.dart';
 import 'package:flutter_project1/Common/widgets/height.dart';
+import 'package:flutter_project1/Common/widgets/inputText.dart';
 import 'package:flutter_project1/Common/widgets/materialbutton.dart';
 
 import 'package:flutter_project1/Common/widgets/textformfield.dart';
@@ -35,23 +36,18 @@ class _SignUpState extends State<SignUp> {
               Container(
                 height: 50.0,
               ),
-              Text(
-                'Welcome!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
+              InputText(
+                  text: 'Welcome!',
                   color: Color(0xff00B761),
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-              Text(
-                'You are almost there!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400),
-              ),
+                  weight: FontWeight.w900,
+                  size: 24.0,
+                  alignment: TextAlign.center),
+              InputText(
+                  text: 'You are almost there!',
+                  color: Colors.black,
+                  weight: FontWeight.w400,
+                  size: 16.0,
+                  alignment: TextAlign.center),
               Height(height: 36.0),
               Image(
                 image: AssetImage("assets/img_signup.png"),
@@ -149,14 +145,12 @@ class _SignUpState extends State<SignUp> {
                     }
                   }),
               Height(height: 27.0),
-              Text(
-                'or',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
+              InputText(
+                  text: 'or',
+                  color: Colors.black,
+                  weight: FontWeight.w300,
+                  size: 16.0,
+                  alignment: TextAlign.center),
               Height(height: 27.0),
               InputElevatedButton(
                   text: 'Facebook',
@@ -173,23 +167,23 @@ class _SignUpState extends State<SignUp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Already have an Account? ',
-                    style:
-                        TextStyle(fontWeight: FontWeight.w400, fontSize: 14.0),
-                  ),
+                  InputText(
+                      text: 'Already have an Account? ',
+                      color: Colors.black,
+                      weight: FontWeight.w400,
+                      size: 14.0,
+                      alignment: TextAlign.center),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Login()));
                     },
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
+                    child: InputText(
+                        text: 'Login',
                         color: Color(0xff00B761),
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                        weight: FontWeight.w400,
+                        size: 14.0,
+                        alignment: TextAlign.center),
                   ),
                 ],
               ),

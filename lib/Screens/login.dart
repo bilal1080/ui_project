@@ -5,7 +5,9 @@ import 'package:flutter_project1/Common/widgets/materialbutton.dart';
 
 import 'package:flutter_project1/Common/widgets/textformfield.dart';
 import 'package:flutter_project1/Screens/funtions.dart';
+import 'package:flutter_project1/Screens/mainpage.dart';
 import 'package:flutter_project1/Screens/signup.dart';
+import 'package:flutter_project1/util/Shared_preference.dart';
 
 class Login extends StatefulWidget {
   Login({Key? key}) : super(key: key);
@@ -104,6 +106,7 @@ class _LoginState extends State<Login> {
                           _passwordController.text.toString());
                       _emailController.clear();
                       _passwordController.clear();
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>MainPage()));
                     }
                   }),
               Height(height: 27.0),
@@ -119,7 +122,9 @@ class _LoginState extends State<Login> {
               InputElevatedButton(
                   text: 'Facebook',
                   color: Color(0xff0078ff),
-                  onPressed: () {},
+                  onPressed: () {
+                    getToken();
+                  },
                   image: Image.asset("assets/icon/ic_fb.png")),
               Height(height: 10.0),
               InputElevatedButton(

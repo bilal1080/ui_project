@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_project1/model/user.dart';
+import 'package:flutter_project1/util/Shared_preference.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter_project1/util/const.dart';
@@ -43,20 +44,21 @@ Future<Post?> Userlogin(String user_name, String pass_word) async {
   URL = URL + '&password=$pass_word';
 
   final response = await http.post(Uri.parse(URL));
-  print(response.statusCode);
+  //print(response.statusCode);
 
   // Post.fromJson(json.decode(response.body));
   if (response.statusCode == 200 || response.statusCode == 201) {
-    print('>>>>>response');
-    print(response.body);
+    // print('>>>>>response');
+    // print(response.body);
     final Map<String, dynamic> responseData = json.decode(response.body);
 
-    var userData = responseData['api_token'].toString();
+    var userData = responseData["api_token"];
+
+    //Post authUser = Post.fromJson(responseData);
     print(userData);
-    // Post authUser = Post.fromJson(userData);
-
-    //UserPreferences().saveUser(authUser);
-
+    print('>>>>>>>>>>>>token');
+    saveUser(userData);
+    // print(UserPreferences().getToken());
   }
 }
 

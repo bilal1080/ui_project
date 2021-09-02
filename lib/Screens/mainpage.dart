@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project1/Common/widgets/materialbutton.dart';
-import 'package:flutter_project1/Screens/funtions.dart';
+import 'package:flutter_project1/Screens/login.dart';
+import 'package:flutter_project1/util/Shared_preference.dart';
 //import 'package:flutter_project1/Screens/funtions.dart';
 
 class MainPage extends StatefulWidget {
@@ -15,27 +16,39 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            color: Colors.white,
+            onPressed: () {
+              removeUser();
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                  (route) => false);
+            },
+            icon: Icon(Icons.logout),
+          )
+        ],
         title: Text('Welcome'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InputMaterialButton(
-                text: 'Click me to get data',
-                color: Colors.blue,
-                onPressed: () {
-                  getData();
-                }),
+            // InputMaterialButton(
+            //     text: 'Click me to remove token',
+            //     color: Colors.blue,
+            //     onPressed: () {
+            //       removeUser();
+            //     }),
             SizedBox(
               height: 20,
             ),
             InputMaterialButton(
-                text: 'Click me to post data',
+                text: 'Click me to check token',
                 color: Colors.blue,
                 onPressed: () {
-                  createUser('malikg@mailinator.com', 'Malik', 'Bilal',
-                      '12345678', '0303172383');
+                  getToken();
                 }),
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project1/Common/widgets/inputText.dart';
+import 'package:flutter_project1/util/post_sharedpreference.dart';
 
 class PostList extends StatefulWidget {
   PostList({Key? key}) : super(key: key);
@@ -9,6 +10,15 @@ class PostList extends StatefulWidget {
 }
 
 class _PostListState extends State<PostList> {
+  String _title = '';
+  String _imagePath = '';
+  @override
+  void initState() {
+    _getTitle();
+    _getImage();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,8 +64,8 @@ class _PostListState extends State<PostList> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ListTile(
-                  leading: Image.asset('assets/img_icon1.png'),
-                  title: Text('Post title'),
+                  leading: CircleAvatar(backgroundImage: AssetImage(_imagePath)),
+                  title: Text(_title),
                   subtitle: Text('time'),
                 ),
               ],
@@ -64,5 +74,21 @@ class _PostListState extends State<PostList> {
         ),
       ),
     );
+  }
+
+  void _getTitle() {
+    gettitle().then((String value) {
+      setState(() {
+        _title = value;
+      });
+    });
+  }
+
+  void _getImage() {
+    getimage().then((value) {
+      setState(() {
+        _imagePath = value!;
+      });
+    });
   }
 }

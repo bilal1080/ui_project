@@ -20,7 +20,9 @@ class _CreatePostState extends State<CreatePost> {
   TextEditingController _titleController = new TextEditingController();
   // ignore: unused_field
   TextEditingController _bodyController = new TextEditingController();
-  File? _imageFile;
+
+  int count = 1;
+  XFile? _imageFile;
   @override
   void initState() {
     super.initState();
@@ -135,8 +137,7 @@ class _CreatePostState extends State<CreatePost> {
                                   height: 128.0,
                                   width: 173.0,
                                   color: Colors.white,
-                                  child: Image.file(
-                                      File(_imageFile!.path.toString())),
+                                  child: Image.file(File(_imageFile!.path)),
                                 )
                         ],
                       )),
@@ -149,8 +150,10 @@ class _CreatePostState extends State<CreatePost> {
                       text: 'Create Post',
                       color: Color(0xff00B761),
                       onPressed: () {
-                        savetitle(_titleController.text);
-                        saveimage(_imageFile!.path.toString());
+                        saveData( _titleController.text,
+                            _bodyController.text, _imageFile!.path);
+                        // counter();
+                        removeData();
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -166,11 +169,27 @@ class _CreatePostState extends State<CreatePost> {
   }
 
   _imgFromGallery() async {
-    File image = (await ImagePicker()
-        .pickImage(source: ImageSource.gallery, imageQuality: 50)) as File;
+    final pickedimage = (await ImagePicker()
+        .pickImage(source: ImageSource.gallery, imageQuality: 50));
 
     setState(() {
-      _imageFile = image;
+      if (pickedimage != null) {
+        _imageFile = pickedimage;
+        print('image path');
+        print(_imageFile!.path);
+      }
     });
   }
+
+  removeData() {
+    _bodyController.clear();
+    _titleController.clear();
+    _imageFile = null;
+  }
+
+  // counter() {
+  //   print("before count $count");
+  //   count++;
+  //   print("After count $count");
+  // }
 }

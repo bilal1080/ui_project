@@ -21,7 +21,7 @@ class _CreatePostState extends State<CreatePost> {
   // ignore: unused_field
   TextEditingController _bodyController = new TextEditingController();
 
-  int count = 1;
+
   XFile? _imageFile;
   @override
   void initState() {

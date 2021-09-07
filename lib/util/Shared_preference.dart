@@ -9,6 +9,7 @@ Future saveUser(String token) async {
 
 void removeUser() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  print("I have remove the given token");
   prefs.remove("api_token");
 }
 
@@ -17,5 +18,3 @@ getToken() async {
   String? apitoken = prefs.getString("api_token");
   print(apitoken.toString());
 }
-
-

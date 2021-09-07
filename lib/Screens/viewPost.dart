@@ -4,26 +4,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project1/Common/widgets/height.dart';
 import 'package:flutter_project1/Common/widgets/inputText.dart';
 
-class ViewPost extends StatefulWidget {
-  ViewPost({Key? key}) : super(key: key);
 
+// ignore: must_be_immutable
+class ViewPost extends StatefulWidget {
+  String body;
+  String iMage;
+
+  ViewPost({
+   required this.body,
+  required this.iMage,});
+ 
   @override
   _ViewPostState createState() => _ViewPostState();
 }
 
 class _ViewPostState extends State<ViewPost> {
   
-  String _body = '';
-  String _imagePath = '';
+  
   @override
   void initState() {
-    // _getBody();
-    // _getImage();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -48,7 +53,7 @@ class _ViewPostState extends State<ViewPost> {
               width: MediaQuery.of(context).size.width,
               //color: Colors.amber,
               child: InputText(
-                  text: _body,
+                  text: widget.body,
                   color: Colors.black,
                   weight: FontWeight.w400,
                   size: 16.0,
@@ -63,7 +68,7 @@ class _ViewPostState extends State<ViewPost> {
                   borderRadius: BorderRadius.all(Radius.circular(5))),
               child: FittedBox(
                 child: Image.file(
-                  File(_imagePath),
+                  File(widget.iMage),
                 ),
                 fit: BoxFit.fill,
               ),
@@ -74,20 +79,5 @@ class _ViewPostState extends State<ViewPost> {
     );
   }
 
-  // void _getBody() {
-  //   getbody().then((value) {
-  //     setState(() {
-  //       print('value');
-  //       _body = value!;
-  //     });
-  //   });
-  // }
-
-  // void _getImage() {
-  //   getimage().then((value) {
-  //     setState(() {
-  //       _imagePath = value!;
-  //     });
-  //   });
-  // }
+  
 }
